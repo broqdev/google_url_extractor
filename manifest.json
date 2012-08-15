@@ -1,0 +1,14 @@
+{
+    "name": "Google URL Extractor",
+    "version": "1.0",
+    "manifest_version": 2,
+    "description": "extract original url from Google results",
+    "background": {
+        "scripts": ["gurl.js"]
+    },
+    "permissions": [
+        "contextMenus",
+        "clipboardWrite",
+        "webNavigation"
+    ]
+}
