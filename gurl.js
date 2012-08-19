@@ -24,7 +24,7 @@ function gurlIsGoogle(url) {
     var a = gurlParser(url);
     console.log(a.hostname);
     var ret = false;
-    if (a.hostname.search("google") >= 0 )
+    if (a.hostname.search("google") >= 0)
         ret = true;
 
     return ret;
@@ -69,7 +69,7 @@ function gurlShow(details) {
     ];
     var url = details.url;
     chrome.contextMenus.removeAll(null);
-    if (gurlIsGoogle(url)) {
+    if (details.frameId == 0 && gurlIsGoogle(url)) {
         chrome.contextMenus.create(menus[0], null);
         //chrome.contextMenus.create(menus[1], null);
     }
