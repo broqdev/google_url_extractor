@@ -61,18 +61,10 @@ function gurlClip(url) {
     body.removeChild(t);
 }
 
-function gurlShow(details) {
-    var contexts = ["link"];
-    var menus = [
-    { "id":"gurlCopy", "title": "copy original url", "contexts": contexts, "onclick": gurlClick },
-    { "id":"gurlOpen", "title": "open original url", "contexts": contexts, "onclick": gurlClick }
-    ];
-    var url = details.url;
-    chrome.contextMenus.removeAll(null);
-    if (details.frameId == 0 && gurlIsGoogle(url)) {
-        chrome.contextMenus.create(menus[0], null);
-        //chrome.contextMenus.create(menus[1], null);
-    }
-}
-
-chrome.webNavigation.onCommitted.addListener(gurlShow);
+var documentUrlPatterns = ["*://*.google.com/*", "*://*.google.com.hk/*", "*://*.google.com.tw/*", "*://*.google.co.jp/*", "*://*.google.co.uk/*"];
+var contexts = ["link"];
+var menus = [
+{ "id":"gurlCopy", "title": "copy original url", "contexts": contexts, "documentUrlPatterns": documentUrlPatterns, "onclick": gurlClick },
+{ "id":"gurlOpen", "title": "open original url", "contexts": contexts, "documentUrlPatterns": documentUrlPatterns, "onclick": gurlClick }
+];
+chrome.contextMenus.create(menus[0], null);
