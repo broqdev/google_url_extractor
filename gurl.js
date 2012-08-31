@@ -6,12 +6,12 @@ function gurlClick(info, tab) {
         return;
     }
 
-//    if (info.menuItemId == "gurlOpen") {
-//        var url = gurlGetOrigin(info.linkUrl);
-//        console.log(url);
-//        chrome.tabs.create({"url":url}, null);
-//        return;
-//    }
+    if (info.menuItemId == "gurlOpen") {
+        var url = gurlGetOrigin(info.linkUrl);
+        console.log(url);
+        chrome.tabs.create({"url":url}, null);
+        return;
+    }
 }
 
 function gurlParser(url) {
@@ -67,4 +67,5 @@ var menus = [
 { "id":"gurlCopy", "title": "copy original url", "contexts": contexts, "documentUrlPatterns": documentUrlPatterns, "onclick": gurlClick },
 { "id":"gurlOpen", "title": "open original url", "contexts": contexts, "documentUrlPatterns": documentUrlPatterns, "onclick": gurlClick }
 ];
-chrome.contextMenus.create(menus[0], null);
+// chrome.contextMenus.create(menus[0], null);
+chrome.contextMenus.create(menus[1], null);
